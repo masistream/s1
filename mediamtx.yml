@@ -1,0 +1,9 @@
+logLevel: info
+api: yes
+apiAddress: :8080
+
+rtmp: true
+rtmpAddress: :1935
+
+paths:
+  all_others:
