@@ -1,5 +1,5 @@
 worker_processes 1;
-error_log /dev/stdout info;
+error_log /dev/stdout debug;
 
 events {
     worker_connections 1024;
@@ -17,13 +17,11 @@ http {
 }
 
 rtmp {
+    access_log /dev/stdout;
+
     server {
         listen 1935;
         chunk_size 4096;
-
-        timeout 30s;
-        ping 30s;
-        ping_timeout 10s;
 
         application live {
             live on;
