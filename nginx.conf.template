@@ -1,4 +1,4 @@
-worker_processes auto;
+worker_processes 1;
 error_log /dev/stdout info;
 
 events {
@@ -20,6 +20,11 @@ rtmp {
     server {
         listen 1935;
         chunk_size 4096;
+
+        timeout 30s;
+        ping 30s;
+        ping_timeout 10s;
+        max_message_size 10M;
 
         application live {
             live on;

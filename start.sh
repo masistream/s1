@@ -4,18 +4,25 @@ YOUTUBE_PUSH=""
 TWITCH_PUSH=""
 KICK_PUSH=""
 
+fix_url() {
+    echo "$1" | sed 's/rtmps:\/\//rtmp:\/\//g'
+}
+
 if [ -n "$YOUTUBE_URL" ]; then
-    echo "[Relay] YouTube Push enabled"
-    YOUTUBE_PUSH="push $YOUTUBE_URL;"
+    CLEAN_URL=$(fix_url "$YOUTUBE_URL")
+    echo "[Relay] YouTube Push enabled: $CLEAN_URL"
+    YOUTUBE_PUSH="push $CLEAN_URL;"
 fi
 
 if [ -n "$TWITCH_URL" ]; then
-    echo "[Relay] Twitch Push enabled"
-    TWITCH_PUSH="push $TWITCH_URL;"
+    CLEAN_URL=$(fix_url "$TWITCH_URL")
+    echo "[Relay] Twitch Push enabled: $CLEAN_URL"
+    TWITCH_PUSH="push $CLEAN_URL;"
 fi
 
 if [ -n "$KICK_URL" ]; then
-    echo "[Relay] Kick Push enabled"
+    CLEAN_URL=$(fix_url "$KICK_URL")
+    echo "[Relay] Kick Push enabled: $CLEAN_URL"
     KICK_PUSH="push $KICK_URL;"
 fi
 
