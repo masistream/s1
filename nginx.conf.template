@@ -24,7 +24,6 @@ rtmp {
         timeout 30s;
         ping 30s;
         ping_timeout 10s;
-        max_message_size 10M;
 
         application live {
             live on;
