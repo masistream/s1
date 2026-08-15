@@ -1,4 +1,4 @@
-logLevel: info
+logLevel: debug
 api: yes
 apiAddress: :8080
 
@@ -6,4 +6,7 @@ rtmp: true
 rtmpAddress: :1935
 
 paths:
+  live:
+    source: publisher
   all_others:
+    path: ~^.*$
