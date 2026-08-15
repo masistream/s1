@@ -1,11 +1,15 @@
-logLevel: debug
+logLevel: info
+
 api: yes
-apiAddress: :8080
+apiAddress: :8081
 
 rtmp: true
 rtmpAddress: :1935
 
+webrtc: yes
+webrtcAddress: :8080
+
 paths:
-  all:
+  all_others:
     runOnAvailable: /relay.sh
     runOnAvailableRestart: yes
