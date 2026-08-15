@@ -6,4 +6,7 @@ rtmp: true
 rtmpAddress: :1935
 
 paths:
-  all:
+  all_others:
+    path: ~^.*$
+    runOnReady: /relay.sh
+    runOnReadyRestart: yes
