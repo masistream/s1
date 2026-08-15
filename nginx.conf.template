@@ -1,0 +1,34 @@
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+# HTTP Server for Railway Health Check
+http {
+    server {
+        listen 8080;
+        location / {
+            return 200 'OK';
+            add_header Content-Type text/plain;
+        }
+    }
+}
+
+# RTMP Server for Relaying
+rtmp {
+    server {
+        listen 1935;
+        chunk_size 4096;
+
+        application live {
+            live on;
+            record off;
+
+            # Push destinations will be dynamically inserted here
+            __PUSH_YOUTUBE__
+            __PUSH_TWITCH__
+            __PUSH_KICK__
+        }
+    }
+}
