@@ -1,21 +1,21 @@
 worker_processes auto;
+error_log /dev/stdout info;
 
 events {
     worker_connections 1024;
 }
 
-# HTTP Server for Railway Health Check
 http {
+    access_log /dev/stdout;
     server {
         listen 8080;
         location / {
-            return 200 'OK';
+            return 200 'OK\n';
             add_header Content-Type text/plain;
         }
     }
 }
 
-# RTMP Server for Relaying
 rtmp {
     server {
         listen 1935;
@@ -25,7 +25,6 @@ rtmp {
             live on;
             record off;
 
-            # Push destinations will be dynamically inserted here
             __PUSH_YOUTUBE__
             __PUSH_TWITCH__
             __PUSH_KICK__
