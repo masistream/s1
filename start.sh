@@ -2,7 +2,7 @@
 set -e
 
 echo "Starting MediaMTX..."
-mediamtx /mediamtx.yml &
+/mediamtx /mediamtx.yml &
 MEDIAMTX_PID=$!
 echo "MediaMTX PID: $MEDIAMTX_PID"
 
